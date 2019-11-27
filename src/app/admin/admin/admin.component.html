@@ -1,1 +1,87 @@
-<p>admin works!</p>
+<div class="container">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>EmailId</th>
+                <th>Gender</th>
+                <th>City</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let obj of studentData" (click)="veiwProfile(obj)" style="cursor: pointer;" data-toggle="modal"
+                data-target="#myModal">
+                <td>{{obj.userName}}</td>
+                <td>{{obj.emailId}}</td>
+                <td>{{obj.gender}}</td>
+                <td>{{obj.city}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                Student Verification
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="row" style="padding-bottom:12px">
+                    <div class="col-md-3">
+                        <img src="../../../assets/images/stud.jpg" width="120px;" height="120px;">
+                    </div>
+                    <div class="col-md-9">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h5> Student Name:</h5>
+                            </div>
+                            <div class="col-md-8">
+                                {{studentProfile['userName']}}
+                            </div>
+                        </div>
+                        <div class="row" style="padding-bottom:12px">
+                            <div class="col-md-4">
+                                <h5> Email Id:</h5>
+                            </div>
+                            <div class="col-md-8">
+                                {{studentProfile.emailId}}
+                            </div>
+                        </div>
+                        <div class="row" style="padding-bottom:12px">
+
+                            <div class="col-md-4">
+                                <h5> Gender:</h5>
+                            </div>
+                            <div class="col-md-8">
+                                {{studentProfile.gender}}
+                            </div>
+                        </div>
+                        <div class="row" style="padding-bottom:12px">
+
+                            <div class="col-md-4">
+                                <h5> City:</h5>
+                            </div>
+                            <div class="col-md-8">
+                                {{studentProfile.city}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer" style="height: 35px;padding: 5px;">
+                <button type="button" class="btn btn-danger btn-sm mystylebt" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary btn-sm mystylebt" data-dismiss="modal"  (click)="verifyStudent()">Verify</button>
+            </div>
+
+        </div>
+    </div>
+</div>

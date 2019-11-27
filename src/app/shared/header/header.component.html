@@ -5,7 +5,7 @@
       </div>
       <ul class="nav navbar-nav navbar-right">
         <li><a [routerLink]="['/register']" routerLinkActive="router-link-active"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a [routerLink]="['/login']" routerLinkActive="router-link-active" ><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li *ngIf="isActive" (click)="logout()"><a  routerLinkActive="router-link-active" ><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
       </ul>
     </div>
   </nav>

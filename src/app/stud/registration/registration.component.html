@@ -1,1 +1,55 @@
-<p>registration works!</p>
+<div class="container">
+    <div class="jumbotron mystyle">
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+            <div class="form-group" style="margin-bottom: 20px;">
+                <div class="row">
+                    <div class="col-md-3"> <label for="email">Student Name</label></div>
+                    <div class="col-md-9"> <input type="email" formControlName="userName" class="form-control"
+                            id="email" placeholder="Enter name" name="email"></div>
+                </div>
+            </div>
+            <div class="form-group" style="margin-bottom: 20px;">
+                <div class="row">
+                    <div class="col-md-3"> <label for="email">City</label></div>
+                    <div class="col-md-9">
+                         <!-- <input type="email" formControlName="city" class="form-control" id="email"
+                            placeholder="Enter city" name="email"> -->
+                            <select class="selectpicker" class="form-control" [(ngModel)]="city" formControlName="city">
+                                    <option *ngFor="let obj of cities">{{obj}}</option>
+                                  </select>
+                                  
+                        </div>
+                </div>
+            </div>
+            <div class="form-group" style="margin-bottom: 20px;">
+                <div class="row">
+                    <div class="col-md-3"> <label for="email">Gender</label></div>
+                    <div class="col-md-9">
+
+                        <input type="radio" [(ngModel)]="gender"  formControlName="gender" name="gender" value="male"
+                            checked> Male
+                        <input type="radio" [(ngModel)]="gender"  formControlName="gender" name="gender" value="female">
+                        Female
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" style="margin-bottom: 20px;">
+                <div class="row">
+                    <div class="col-md-3"> <label for="email">Email:</label></div>
+                    <div class="col-md-9"> <input type="email" formControlName="emailId" class="form-control" id="email"
+                            placeholder="Enter email" name="email"></div>
+                </div>
+            </div>
+            <div class="form-group" style="margin-bottom: 20px;">
+                <div class="row">
+                    <div class="col-md-3"> <label for="pwd">Password:</label></div>
+                    <div class="col-md-9"> <input type="password" formControlName="password" class="form-control"
+                            id="pwd" placeholder="Enter password" name="pwd"></div>
+                </div>
+            </div>
+            <button [routerLink]="['/studentlogin']" routerLinkActive="router-link-active"
+                class="btn btn-primary pull-right">Login Here</button>
+            <button type="submit" class="btn btn-primary pull-left" [disabled]="!registrationForm.valid">Submit</button>
+        </form>
+    </div>
+</div>
