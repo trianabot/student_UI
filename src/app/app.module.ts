@@ -16,6 +16,15 @@ import { ProfileComponent } from './stud/profile/profile.component';
 import { AdminService } from './shared/services/admin.service';
 import { SloginComponent } from './stud/slogin/slogin.component';
 import { MediaComponent } from './admin/media/media.component';
+import { ViewdetailsComponent } from './stud/viewdetails/viewdetails.component';
+import { ComputerComponent } from './techology/computer/computer.component';
+import { MarketingComponent } from './techology/marketing/marketing.component';
+import { BusinessComponent } from './techology/business/business.component';
+import { MechanicalComponent } from './techology/mechanical/mechanical.component';
+import { CivilComponent } from './techology/civil/civil.component';
+import { ChemicalComponent } from './techology/chemical/chemical.component';
+import { PharmacyComponent } from './techology/pharmacy/pharmacy.component';
+import { ElectricalComponent } from './techology/electrical/electrical.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +36,16 @@ import { MediaComponent } from './admin/media/media.component';
     AdminComponent,
     ProfileComponent,
     SloginComponent,
-    MediaComponent
+    MediaComponent,
+    ViewdetailsComponent,
+    ComputerComponent,
+    MarketingComponent,
+    BusinessComponent,
+    MechanicalComponent,
+    CivilComponent,
+    ChemicalComponent,
+    PharmacyComponent,
+    ElectricalComponent
   ],
   imports: [
     FormsModule,

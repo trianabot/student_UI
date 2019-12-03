@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpBackend } from '@angular/common/http';
+import { HttpClient, HttpBackend, HttpRequest, HttpEvent } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -18,4 +19,26 @@ export class AdminService {
   logout(data){
     return this.http.post(this.apiRoute + '/user/logout',data);
   }
+
+  pushFileToStorage(file: File, uploadUrl_): Observable<HttpEvent<{}>> {
+    const formdata: FormData = new FormData();
+    formdata.append('profileImg', file);
+    const req = new HttpRequest('POST', uploadUrl_, formdata, {
+      reportProgress: true,
+      responseType: 'json'
+    }
+    );
+    return this.http.request(req);
+  }
+  getVideosByType(data){
+    return this.http.post(this.apiRoute + '/adminroute/getvideosbytype',data);
+   }
+
+   getSubjectDetails(data){
+    return this.http.post(this.apiRoute + '/adminroute/getsubjectdetails',data);
+   }
+
+   getvideosbySelectedType(data){
+    return this.http.post(this.apiRoute + '/adminroute/getvideosbyselectedtype',data);
+   }
 }

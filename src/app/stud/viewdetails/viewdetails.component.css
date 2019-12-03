@@ -1,0 +1,19 @@
+.m-t-12{
+    margin-top: 20px;
+    display: flex;
+    }
+    u{
+        color: brown;
+    }
+    img{
+        width: 80%;
+    }
+    
+    .icon{
+        width: 8% !important;
+    }
+    .text_info{
+        background-color: #32141c;
+        color: white;
+        text-align: center;
+    }
