@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <div class="jumbotron mystyle">
         <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
             <div class="form-group" style="margin-bottom: 20px;">
@@ -12,13 +12,13 @@
                 <div class="row">
                     <div class="col-md-3"> <label for="email">City</label></div>
                     <div class="col-md-9">
-                         <!-- <input type="email" formControlName="city" class="form-control" id="email"
-                            placeholder="Enter city" name="email"> -->
-                            <select class="selectpicker" class="form-control" [(ngModel)]="city" formControlName="city">
-                                    <option *ngFor="let obj of cities">{{obj}}</option>
-                                  </select>
-                                  
-                        </div>
+                        <input type="email" formControlName="city" class="form-control" id="email"
+                            placeholder="Enter city" name="email">
+                        <select class="selectpicker" class="form-control" [(ngModel)]="city" formControlName="city">
+                            <option *ngFor="let obj of cities">{{obj}}</option>
+                        </select>
+
+                    </div>
                 </div>
             </div>
             <div class="form-group" style="margin-bottom: 20px;">
@@ -26,9 +26,9 @@
                     <div class="col-md-3"> <label for="email">Gender</label></div>
                     <div class="col-md-9">
 
-                        <input type="radio" [(ngModel)]="gender"  formControlName="gender" name="gender" value="male"
+                        <input type="radio" [(ngModel)]="gender" formControlName="gender" name="gender" value="male"
                             checked> Male
-                        <input type="radio" [(ngModel)]="gender"  formControlName="gender" name="gender" value="female">
+                        <input type="radio" [(ngModel)]="gender" formControlName="gender" name="gender" value="female">
                         Female
                     </div>
                 </div>
@@ -52,4 +52,155 @@
             <button type="submit" class="btn btn-primary pull-left" [disabled]="!registrationForm.valid">Submit</button>
         </form>
     </div>
-</div>
+</div> -->
+<div class="container padding" >
+        <div class="row">
+            <div class="col-md-12 p-250">
+                <div class="col-md-12 m-0">
+                    <h2 class="text-center">Registratation Form</h2>
+                    <form>
+                        <div class="col-md-12 form_info">
+                            <div class="col-md-6 p-l-0">
+                                <div class="form-group">
+                                    <label for="firstName">First Name</label>
+                                    <input type="text" formControlName="firstName" class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                                    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                                        <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 p-r-0">
+                                <div class="form-group">
+                                    <label for="lastName">Last Name</label>
+                                    <input type="text" formControlName="lastName" class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                                    <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                                        <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 form_info">
+                            <div class="col-md-6 p-l-0">
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input type="text" formControlName="username" class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                                        <div *ngIf="f.username.errors.required">Username is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 p-r-0">
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" formControlName="password" class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                        <div *ngIf="f.password.errors.required">Password is required</div>
+                                        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 form_info">
+                            <div class="col-md-6 p-l-0">
+                                <div class="form-group">
+                                    <label for="password">Gender</label>
+                                    <select id="select" class="form-control">
+                                        <option>Select</option>
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 p-r-0">
+                                <div class="form-group">
+                                    <label for="" class="dropdown">Degree</label>
+                                    <select id="select" class="form-control">
+                                            <option>Select Degree</option>
+                                            <option>Degree</option>
+                                            <option>MBA</option>
+                                            <option>MCA</option>
+                                            <option>B Tech</option>
+                                            <option>M Tech</option>
+                                        </select>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-md-12 form_info">
+                            <div class="col-md-6 p-l-0">
+                                <div class="form-group">
+                                    <label for="" class="dropdown">Branch</label>
+                                    <select id="select" class="form-control">
+                                            <option>Select Branch</option>
+                                            <option>CSE</option>
+                                            <option>EEE</option>
+                                            <option>ECE</option>
+                                            <option>Mechanical</option>
+                                            <option>Civil</option>
+                                        </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 p-r-0">
+                                <div class="form-group">
+                                    <label for="" class="dropdown">University</label>
+                                    <select id="select" class="form-control">
+                                            <option>Select University</option>
+                                            <option>Gandhi Institute of Technology and Management</option>
+                                            <option>K L University</option>
+                                            <option>Andhra University</option>
+                                            <option>Jawaharlal Nehru Technological University, Kakinada</option>
+                                            <option>Acharya Nagarjuna University</option>
+                                            <option>Jawaharlal Nehru Technological University,
+                                                    Anantapur</option>
+                                            <option>Sri Venkateswara University</option>
+                                            <option>Vignan University</option>
+                                            <option>Dr. N.T.R. University of Health Sciences</option>
+                                            <option>Yogi Vemana University</option>
+                                        </select>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-md-12 form_info">
+                            <div class="col-md-6 p-l-0">
+                                <div class="form-group">
+                                    <label for="">District</label>
+                                    <input type="text" formControlName="City" class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                        <div *ngIf="f.password.errors.required">Password is required</div>
+                                        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 p-r-0">
+                                    <div class="form-group">
+                                            <label for="">City</label>
+                                            <input type="text" formControlName="City" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                                            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                                <div *ngIf="f.password.errors.required">Password is required</div>
+                                                <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters
+                                                </div>
+                                            </div>
+                                        </div>
+                            </div>
+                        </div>
+    
+                        <div class="form-group text-center">
+                            <button [disabled]="loading" class="btn  btn_color">Register</button>
+                            <img *ngIf="loading"
+                                src=" "/>
+                            <a class="btn btn-link">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

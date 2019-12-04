@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable ,EventEmitter } from '@angular/core';
 import { HttpClient, HttpBackend, HttpEvent, HttpRequest, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
@@ -6,10 +6,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class StudentService {
-
+  $isLoggedIn = new EventEmitter();
+  user:any;
   private apiRoute = environment.apiEndPoint;
   constructor(private http: HttpClient,httpbackend: HttpBackend) {
     this.http = new HttpClient(httpbackend);
+  }
+
+    setUserName(data) {
+    this.$isLoggedIn.emit(data);
   }
 
   userRegistration(data) {

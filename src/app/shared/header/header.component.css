@@ -13,6 +13,10 @@
 .fa{
     font-size: 22px;
 }
+.p-e-20{
+  text-align: right !important;
+  padding: 16px !important;
+}
 .dropbtn {
     background-color: #7a1d38;
     color: white;
@@ -30,6 +34,14 @@
     position: relative;
     display: inline-block;
   }
+  .btn_color{
+    background: #8e2242 !important;
+    color: white;
+    border: 0px;
+}
+.padding{
+  padding: 50px 0px 20px 0px;
+}
   
   .dropdown-content {
     display: none;

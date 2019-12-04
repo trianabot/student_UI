@@ -1,5 +1,8 @@
-<div class="container">
-    <table class="table table-bordered">
+<div class="container" style="margin-bottom:20px;">
+        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#addVideosModal">Add Video</button>
+        <button type="button" class="btn btn-info btn-sm " data-toggle="modal" data-target="#addSubjectModal">Add Subject</button>
+        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#addCourceModel">Add Cource</button>
+    <!-- <table class="table table-bordered">
         <thead>
             <tr>
                 <th>Student Name</th>
@@ -17,21 +20,21 @@
                 <td>{{obj.city}}</td>
             </tr>
         </tbody>
-    </table>
+    </table> -->
 </div>
 
 
-<!-- The Modal -->
+<!-- 
 <div class="modal" id="myModal">
     <div class="modal-dialog">
         <div class="modal-content">
 
-            <!-- Modal Header -->
+       
             <div class="modal-header">
                 Student Verification
             </div>
 
-            <!-- Modal body -->
+           
             <div class="modal-body">
                 <div class="row" style="padding-bottom:12px">
                     <div class="col-md-3">
@@ -76,7 +79,7 @@
                 </div>
             </div>
 
-            <!-- Modal footer -->
+           
             <div class="modal-footer" style="height: 35px;padding: 5px;">
                 <button type="button" class="btn btn-danger btn-sm mystylebt" data-dismiss="modal">Cancel</button>
                 <button type="button" class="btn btn-primary btn-sm mystylebt" data-dismiss="modal"  (click)="verifyStudent()">Verify</button>
@@ -84,4 +87,100 @@
 
         </div>
     </div>
-</div>
+</div>-->
+
+  <!-- Modal -->
+  <div class="modal fade" id="addSubjectModal" role="dialog">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                    <div class="dropdown">
+                            <div class="form-group">
+                                <select class="form-control" style="width:200px;"  (change)="addSubject($event.target.value)">
+                                  <option selected>Select Category</option>
+                                  <option *ngFor="let obj of category" (click)="getobj(obj)" >{{obj.course}}</option>
+                                </select>
+                              </div>
+                      </div>
+                      <div class="form-group">
+                            <label>Subject:</label>
+                            <input type="text" placeholder="add subject" [(ngModel)]="subject"/>
+                          </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" (click)="addSubjectData(subject);" data-dismiss="modal">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+       <!-- Modal -->
+  <div class="modal fade" id="addCourceModel" role="dialog">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                    <div class="form-group">
+                            <label>Subject:</label>
+                            <input type="text" placeholder="add subject" [(ngModel)]="cource"/>
+                          </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" (click)="addCource(cource);" data-dismiss="modal">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal sm" id="addVideosModal" role="dialog">
+            <div class="modal-dialog">
+            
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h6 class="modal-title">Modal Header</h6>
+                </div>
+                <div class="modal-body">
+                <div class="form-group">
+            <label for="email">Email address:</label>
+            <input type="text" id="email" [(ngModel)]="topics">
+          </div>
+          <div class="dropdown">
+                <div class="form-group">
+                    <select class="form-control" style="width:200px;"  (change)="selectCategory($event.target.value)">
+                      <option selected>Select Category</option>
+                      <option *ngFor="let obj of category" 
+                       >{{obj.course}}</option>
+                    </select>
+                  </div>
+          </div>
+          <div class="dropdown">
+                <div class="form-group">
+                    <select class="form-control" style="width:200px;"  (change)="selectedSubject($event.target.value)">
+                      <option selected>Select Category</option>
+                      <option *ngFor="let obj of subjectData" 
+                       >{{obj.subject}}</option>
+                    </select>
+                  </div>
+          </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                   <button type="button" class="btn btn-default" (click)="addVideos(topics)" data-dismiss="modal">Submit</button>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          

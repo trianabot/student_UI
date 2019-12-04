@@ -3,7 +3,8 @@ import { AdminService } from '../services/admin.service';
 import { RouterModule, Routes,Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { IfStmt } from '@angular/compiler';
-
+import { Location } from '@angular/common';
+import { StudentService } from '../services/student.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -16,20 +17,29 @@ export class HeaderComponent implements OnInit {
   loggedInUser:any;
   category:any=[];
   subjectData:any=[];
-  
-  constructor(private adminservice:AdminService,private route:Router) { }
+  showMenu:boolean =true;
+  showUserProfile:boolean = false;
+  myName = "";
+  isUserLogged = false;
+  constructor(private student:StudentService,private adminservice:AdminService,private route:Router,private location:Location) { }
 
   ngOnInit() {
     this.isActive=JSON.parse(sessionStorage.getItem("isActive"));
     this.gender = sessionStorage.getItem("gender");
     this.loggedInUser=sessionStorage.getItem("userId");
-    this.category=["Computer Science",
-    "Mechanical",
-    "Electrical",
-    "Marketing",
-    "Civil",
-    "Chemical",
-    "Pharmacy","Accounting"];
+    
+    if(this.loggedInUser == null || this.loggedInUser == undefined){
+      this.showMenu = true;
+      this.showUserProfile = false;
+    }
+    else{
+      this.showUserProfile = true;
+      this.showMenu = false;
+    }
+    this. getCources();
+   this.student.$isLoggedIn.subscribe(data=>{
+     this.isActive=data;
+   })
   }
    
   logout(){
@@ -74,4 +84,10 @@ export class HeaderComponent implements OnInit {
       this.route.navigate(['/business']);
     }
   }
+  getCources(){
+    this.adminservice.getCources().subscribe(data=>{
+      this.category=data['data'];
+    })
+  }
+
 }

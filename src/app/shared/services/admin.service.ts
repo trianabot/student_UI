@@ -41,4 +41,23 @@ export class AdminService {
    getvideosbySelectedType(data){
     return this.http.post(this.apiRoute + '/adminroute/getvideosbyselectedtype',data);
    }
+
+   //To get all cources 
+   getCources(){
+    return this.http.get(this.apiRoute + '/adminroute/getcources');
+   }
+
+   // To add subject
+   addSubject(data){
+    return this.http.post(this.apiRoute + '/adminroute/addsubject',data);
+   }
+
+   addCource(data){
+    return this.http.post(this.apiRoute + '/adminroute/addcource',data);
+   }
+
+   getsubjectbyid(data){
+      return this.http.post(this.apiRoute + '/adminroute/getsubjectbyid',data);
+   }
+
 }

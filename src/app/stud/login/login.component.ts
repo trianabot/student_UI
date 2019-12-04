@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output,OnInit } from '@angular/core';
 import {FormGroup,FormBuilder,Validators} from '@angular/forms';
 import {StudentService} from '../../shared/services/student.service';
 import { RouterModule, Routes,Router } from '@angular/router';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginForm:FormGroup
+  loginForm:FormGroup;
+  @Output('change') change = new EventEmitter();
   constructor(private formbuilder:FormBuilder,private studentService:StudentService,private route:Router) { }
 
   ngOnInit() {
@@ -25,6 +27,7 @@ export class LoginComponent implements OnInit {
       isActive:true
     }
     this.studentService.userLogin(obj).subscribe(data=>{
+      this.studentService.setUserName(data['userData'].isActive);
       sessionStorage.setItem("token",data['token']);
       sessionStorage.setItem("emailId",data['userData'].emailId);
       sessionStorage.setItem("isActive",data['userData'].isActive);

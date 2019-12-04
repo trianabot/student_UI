@@ -11,61 +11,72 @@
   </nav>
    -->
 
-   <div class="container-fluid">
-    <div class="row head">
-      <div class="col-md-1">
-        <h5 style="color: white; padding: 14px;">LOGO</h5>
+<div *ngIf="isActive" class="container-fluid">
+
+  <div class="row head">
+    <div class="col-md-1">
+      <h5 style="color: white; padding: 14px;">LOGO </h5>
+    </div>
+    <div class="col-md-5 bg-color">
+      <form class="form-inline md-form form-sm active-pink-2">
+        <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search" aria-label="Search">
+
+      </form>
+    </div>
+    <div class="col-md-2 bg-color">
+      <div class="dropdown">
+        <div class="form-group">
+          <select class="form-control" style="width:200px;" (change)="getVideosByType($event.target.value)">
+            <option selected>Select Category</option>
+            <option *ngFor="let obj of category">{{obj.course}}</option>
+          </select>
+        </div>
       </div>
-      <div class="col-md-5 bg-color">
-        <form class="form-inline md-form form-sm active-pink-2">
-          <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search" aria-label="Search"
-           >
-          <!-- <i class="fa fa-search" aria-hidden="true"></i> -->
-           
-          <!-- <mdb-icon fas icon="search" aria-hidden="true"></mdb-icon> -->
-        </form>
-      </div>
-      <div class="col-md-2 bg-color">
-        <div class="dropdown">
-            <div class="form-group">
-                <select class="form-control" style="width:200px;" (change)="getVideosByType($event.target.value)">
-                  <option selected>Select Category</option>
-                  <option *ngFor="let obj of category" >{{obj}}</option>
-                </select>
-              </div>
-      </div>
-      </div>
-      <div class="col-md-2 bg-color">
-        <button class="dropbtn" type="button" routerLink="/viewdetails" style="padding: 6px;">View Details</button>
-      </div>
-      <div class="col-md-2">
-        <div class="row">
-          <div class="col-md-9">
-                <p style="display: grid;text-align: right;">
-                    <i class="fa fa-user-o" aria-hidden="true" style="padding: 6px;"></i>
-                    <span style="color: white; font-size: 7px;">Friends</span>
-                </p>
-          </div>
-          <div class="col-md-3">
-              <!-- <p>
-                  <i class="fa fa-user-circle" aria-hidden="true" style="padding: 6px;margin-left: -21px;"></i>
-              </p> -->
-              <div class="pic_middle" *ngIf="gender=='female'">
-                  <img class="rounded-circle mx-auto d-block sac-profile-pic"
-                  [src]="apiendpoint+'/profilePicture/'+loggedInUser+'.jpg'"
-                  onerror="if (this.src != '../../../assets/images/female.png') this.src = '../../../assets/images/female.png';"
+    </div>
+    <div class="col-md-2 bg-color">
+      <button class="dropbtn" type="button" routerLink="/viewdetails" style="padding: 6px;">View Details</button>
+    </div>
+    <div class="col-md-2">
+      <div class="row">
+        <div class="col-md-9">
+          <button type="submit" (click)="logout()" class="btn btn-primary">
+            Logout
+
+          </button>
+        </div>
+        <div class="col-md-3">
+
+          <div class="pic_middle" *ngIf="gender=='female'">
+            <img class="rounded-circle mx-auto d-block sac-profile-pic"
+              [src]="apiendpoint+'/profilePicture/'+loggedInUser+'.jpg'"
+              onerror="if (this.src != '../../../assets/images/female.png') this.src = '../../../assets/images/female.png';"
               alt="../../../assets/images/female.png" class="avatar">
-                </div>
-                <div class="pic_middle" *ngIf="gender=='male'">
-                    <img class="rounded-circle mx-auto d-block sac-profile-pic"
-                    [src]="apiendpoint+'/profilePicture/'+loggedInUser+'.jpg'"
-                    onerror="if (this.src != '../../../assets/images/male.png') this.src = '../../../assets/images/male.png';"
-                alt="../../../assets/images/male.png" class="avatar">
-                  </div>
+          </div>
+          <div class="pic_middle" *ngIf="gender=='male'">
+            <img class="rounded-circle mx-auto d-block sac-profile-pic"
+              [src]="apiendpoint+'/profilePicture/'+loggedInUser+'.jpg'"
+              onerror="if (this.src != '../../../assets/images/male.png') this.src = '../../../assets/images/male.png';"
+              alt="../../../assets/images/male.png" class="avatar">
           </div>
         </div>
       </div>
     </div>
   </div>
- 
-  
+</div>
+
+
+
+<div *ngIf="!isActive" class="container-fluid">
+
+  <div class="row head">
+    <div class="col-md-10">
+      <h5 style="color: white; padding: 14px;">LOGO </h5>
+    </div>
+    <div class="col-md-2 p-e-20">
+      <button type="submit" [routerLink]="['/register']" routerLinkActive="router-link-active"
+        class="btn_color">Register</button>
+      <button type="submit" [routerLink]="['/login']" routerLinkActive="router-link-active"
+        class="btn_color">Login</button>
+    </div>
+  </div>
+</div>
