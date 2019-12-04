@@ -63,4 +63,9 @@ export class StudentService {
     console.log("data",data);
     return this.http.post(this.apiRoute + '/adminroute/getvideosbyselectedtype',data);
    }
+
+   //To get all cources 
+   getCources(){
+    return this.http.get(this.apiRoute + '/adminroute/getcources');
+   }
 }

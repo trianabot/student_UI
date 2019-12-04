@@ -39,24 +39,37 @@
     <div class="col-md-2">
       <div class="row">
         <div class="col-md-9">
-          <button type="submit" (click)="logout()" class="btn btn-primary">
+          <!-- <button type="submit" (click)="logout()" class="btn btn-primary">
             Logout
 
-          </button>
+          </button> -->
         </div>
         <div class="col-md-3">
-
-          <div class="pic_middle" *ngIf="gender=='female'">
+          <div class="pic_middle dropdown" *ngIf="gender=='female'">
             <img class="rounded-circle mx-auto d-block sac-profile-pic"
               [src]="apiendpoint+'/profilePicture/'+loggedInUser+'.jpg'"
               onerror="if (this.src != '../../../assets/images/female.png') this.src = '../../../assets/images/female.png';"
               alt="../../../assets/images/female.png" class="avatar">
+              <div class="dropdown-content">
+                  <!-- <img src="img_5terre.jpg" alt="Cinque Terre" width="300" height="200"> -->
+                  <div class="desc">Profile</div>
+                  <div class="desc">Settings</div>
+                  <div class="desc">Change Password</div>
+                  <div class="desc"  (click)="logout()">Logout</div>
+                  </div>
           </div>
-          <div class="pic_middle" *ngIf="gender=='male'">
+          <div class="pic_middle dropdown" *ngIf="gender=='male'">
             <img class="rounded-circle mx-auto d-block sac-profile-pic"
               [src]="apiendpoint+'/profilePicture/'+loggedInUser+'.jpg'"
               onerror="if (this.src != '../../../assets/images/male.png') this.src = '../../../assets/images/male.png';"
               alt="../../../assets/images/male.png" class="avatar">
+              <div class="dropdown-content">
+                  <!-- <img src="img_5terre.jpg" alt="Cinque Terre" width="300" height="200"> -->
+                  <div class="desc">Profile</div>
+                  <div class="desc">Settings</div>
+                  <div class="desc">Change Password</div>
+                  <div class="desc"  (click)="logout()">Logout</div>
+                  </div>
           </div>
         </div>
       </div>

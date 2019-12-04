@@ -58,15 +58,15 @@
             <div class="col-md-12 p-250">
                 <div class="col-md-12 m-0">
                     <h2 class="text-center">Registratation Form</h2>
-                    <form>
+                    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
                         <div class="col-md-12 form_info">
                             <div class="col-md-6 p-l-0">
                                 <div class="form-group">
-                                    <label for="firstName">First Name</label>
-                                    <input type="text" formControlName="firstName" class="form-control"
-                                        [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
-                                    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-                                        <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                                    <label for="userName">First Name</label>
+                                    <input type="text" formControlName="userName" class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && f.userName.errors }" />
+                                    <div *ngIf="submitted && f.userName.errors" class="invalid-feedback">
+                                        <div *ngIf="f.userName.errors.required">First Name is required</div>
                                     </div>
                                 </div>
                             </div>
@@ -85,10 +85,10 @@
                             <div class="col-md-6 p-l-0">
                                 <div class="form-group">
                                     <label for="username">Username</label>
-                                    <input type="text" formControlName="username" class="form-control"
-                                        [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-                                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                                        <div *ngIf="f.username.errors.required">Username is required</div>
+                                    <input type="text" formControlName="emailId" class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && f.emailId.errors }" />
+                                    <div *ngIf="submitted && f.emailId.errors" class="invalid-feedback">
+                                        <div *ngIf="f.emailId.errors.required">Username is required</div>
                                     </div>
                                 </div>
                             </div>
@@ -109,18 +109,18 @@
                             <div class="col-md-6 p-l-0">
                                 <div class="form-group">
                                     <label for="password">Gender</label>
-                                    <select id="select" class="form-control">
-                                        <option>Select</option>
-                                        <option>Male</option>
-                                        <option>Female</option>
+                                    <select id="select" class="form-control" formControlName="gender">
+                                        <option selected>Select</option>
+                                        <option>male</option>
+                                        <option>female</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6 p-r-0">
                                 <div class="form-group">
                                     <label for="" class="dropdown">Degree</label>
-                                    <select id="select" class="form-control">
-                                            <option>Select Degree</option>
+                                    <select id="select" class="form-control" formControlName="degree">
+                                            <option selected>Select Degree</option>
                                             <option>Degree</option>
                                             <option>MBA</option>
                                             <option>MCA</option>
@@ -135,20 +135,16 @@
                             <div class="col-md-6 p-l-0">
                                 <div class="form-group">
                                     <label for="" class="dropdown">Branch</label>
-                                    <select id="select" class="form-control">
-                                            <option>Select Branch</option>
-                                            <option>CSE</option>
-                                            <option>EEE</option>
-                                            <option>ECE</option>
-                                            <option>Mechanical</option>
-                                            <option>Civil</option>
+                                    <select id="select" class="form-control" formControlName="course" >
+                                            <option selected>Select Branch</option>
+                                            <option *ngFor="let obj of courceData">{{obj.course}}</option>
                                         </select>
                                 </div>
                             </div>
                             <div class="col-md-6 p-r-0">
                                 <div class="form-group">
                                     <label for="" class="dropdown">University</label>
-                                    <select id="select" class="form-control">
+                                    <select id="select" class="form-control" formControlName="university">
                                             <option>Select University</option>
                                             <option>Gandhi Institute of Technology and Management</option>
                                             <option>K L University</option>
@@ -170,11 +166,11 @@
                             <div class="col-md-6 p-l-0">
                                 <div class="form-group">
                                     <label for="">District</label>
-                                    <input type="text" formControlName="City" class="form-control"
-                                        [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-                                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                                        <div *ngIf="f.password.errors.required">Password is required</div>
-                                        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters
+                                    <input type="text" formControlName="district" class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && f.district.errors }" />
+                                    <div *ngIf="submitted && f.district.errors" class="invalid-feedback">
+                                        <div *ngIf="f.district.errors.required">District is required</div>
+                                        <div *ngIf="f.district.errors.minlength">District must be at least 6 characters
                                         </div>
                                     </div>
                                 </div>
@@ -182,11 +178,11 @@
                             <div class="col-md-6 p-r-0">
                                     <div class="form-group">
                                             <label for="">City</label>
-                                            <input type="text" formControlName="City" class="form-control"
-                                                [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-                                            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                                                <div *ngIf="f.password.errors.required">Password is required</div>
-                                                <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters
+                                            <input type="text" formControlName="city" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && f.city.errors }" />
+                                            <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+                                                <div *ngIf="f.city.errors.required">City is required</div>
+                                                <div *ngIf="f.city.errors.minlength">City must be at least 6 characters
                                                 </div>
                                             </div>
                                         </div>
@@ -194,7 +190,7 @@
                         </div>
     
                         <div class="form-group text-center">
-                            <button [disabled]="loading" class="btn  btn_color">Register</button>
+                            <button [disabled]="loading" [disabled]="!registrationForm.valid" class="btn  btn_color">Register</button>
                             <img *ngIf="loading"
                                 src=" "/>
                             <a class="btn btn-link">Cancel</a>

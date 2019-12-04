@@ -18,12 +18,14 @@ export class ProfileComponent implements OnInit {
   uploadImage: File;
   activityurl: any;
   userPost:any=[];
+  userCource:any;
   public apiendpoint = environment.apiEndPoint;
   constructor(private userService:StudentService) { }
 
   ngOnInit() {
     this.loggedInUser=sessionStorage.getItem("userId");
     this.gender=sessionStorage.getItem("gender");
+    this.userCource=sessionStorage.getItem("course");
     this.getUserPost();
   }
 
@@ -74,7 +76,7 @@ export class ProfileComponent implements OnInit {
 
   getUserPost(){
     let obj={
-      OwnerId:sessionStorage.getItem("userId")
+      type:sessionStorage.getItem("course")
     }
     this.userService.getvideosUserId(obj).subscribe(data=>{
       this.userPost=data['data'];

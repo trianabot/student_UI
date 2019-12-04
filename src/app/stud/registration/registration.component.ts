@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class RegistrationComponent implements OnInit {
 
   registrationForm:FormGroup
-  cities:any=[];
+  courceData:any=[];
   constructor(private formbuilder:FormBuilder,private studentService:StudentService,private route:Router) { }
 
   ngOnInit() {
@@ -19,25 +19,15 @@ export class RegistrationComponent implements OnInit {
       'emailId': ['',Validators.required],
       'password': ['',Validators.required],
       'userName': ['',Validators.required],
+      'lastName': ['',Validators.required],
       'gender': ['',Validators.required],
       'city':['',Validators.required],
+      'district':['',Validators.required],
+      'course':['',Validators.required],
+      'degree':['',Validators.required],
+      'university':['',Validators.required],
     });
-    this.cities=["Mumbai","Delhi","Bangalore","Hyderabad","Ahmedabad",
-    "Chennai","Kolkata","Surat","Pune","Jaipur","Lucknow",
-    "Kanpur","Nagpur","Indore","Thane","Bhopal","Visakhapatnam",
-    "Pimpri & Chinchwad","Patna","Vadodara","Ghaziabad","Ludhiana",
-    "Agra","Nashik","Faridabad","Meerut","Rajkot","Kalyan & Dombivali",
-    "Vasai & Virar","Varanasi","Srinagar","Aurangabad","Dhanbad","Amritsar",
-    "Navi_Mumbai","Allahabad","Ranchi","Haora","Coimbatore","Jabalpur",
-    "Gwalior","Vijayawada","Jodhpur","Madurai","Raipur","Kota","Guwahati",
-    "Chandigarh","Solapur","Hubli_Dharwad","Bareilly","Moradabad","Mysore",
-    "Gurgaon","Aligarh","Jalandhar","Tiruchirappalli","Bhubaneswar","Salem",
-    "Mira","Bhayander","Thiruvananthapuram","Bhiwandi","Saharanpur","Gorakhpur",
-    "Guntur","Bikaner","Amravati","Noida","Jamshedpur","Bhilai","Warangal","Cuttack",
-    "Firozabad","Kochi","Dehradun","Durgapur","Asansol","Nanded","Kolapur","Ajmer",
-    "Gulbarga","Jamnagar","Ujjain","Loni","Siliguri","Jhansi","Ulhasnagar","Nellore",
-    "Jammu","Sangli","Belgaum","Mangalore","Ambattur","Tirunelveli","Malegoan","Gaya",
-    "Jalgaon","Udaipur","Maheshtala"];
+    this.getCources();
   }
 
   onSubmit(){
@@ -45,8 +35,13 @@ export class RegistrationComponent implements OnInit {
       emailId:this.registrationForm.value.emailId,
       password:this.registrationForm.value.password,
       userName:this.registrationForm.value.userName,
+      lastName:this.registrationForm.value.lastName,
       gender:this.registrationForm.value.gender,
       city:this.registrationForm.value.city,
+      district:this.registrationForm.value.district,
+      course:this.registrationForm.value.course,
+      degree:this.registrationForm.value.degree,
+      university:this.registrationForm.value.university,
     }
     console.log("obj",obj);
     this.studentService.userRegistration(obj).subscribe(data=>{
@@ -56,11 +51,11 @@ export class RegistrationComponent implements OnInit {
       console.log("student registration error",err);
     })
   }
+
+  getCources(){
+    this.studentService.getCources().subscribe(data=>{
+      this.courceData=data['data'];
+    })
+  }
 }
 
-
-// "userName": "moni",
-// "emailId": "monikachhatre22@gmail.com",
-// "password": "123",
-// "gender":"female",
-// "city": "nanded",
