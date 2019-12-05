@@ -25,6 +25,8 @@ import { CivilComponent } from './techology/civil/civil.component';
 import { ChemicalComponent } from './techology/chemical/chemical.component';
 import { PharmacyComponent } from './techology/pharmacy/pharmacy.component';
 import { ElectricalComponent } from './techology/electrical/electrical.component';
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import { FriendComponent } from './stud/friend/friend.component';
 
 @NgModule({
   declarations: [
@@ -45,14 +47,16 @@ import { ElectricalComponent } from './techology/electrical/electrical.component
     CivilComponent,
     ChemicalComponent,
     PharmacyComponent,
-    ElectricalComponent
+    ElectricalComponent,
+    FriendComponent
   ],
   imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AutocompleteLibModule
   ],
   providers: [StudentService,
     AdminService,

@@ -33,6 +33,8 @@ export class LoginComponent implements OnInit {
       sessionStorage.setItem("isActive",data['userData'].isActive);
       sessionStorage.setItem("userId",data['userData'].userId);
       sessionStorage.setItem("course",data['userData'].course);
+      sessionStorage.setItem("city",data['userData'].city);
+      sessionStorage.setItem("userName",data['userData'].userName);
       sessionStorage.setItem("isProfileImage", data['userData']['isProfileImage']);
       sessionStorage.setItem("gender",data['userData'].gender);
       if(data['userData'].isAdmin==false){

@@ -16,6 +16,7 @@ import { CivilComponent } from './techology/civil/civil.component';
 import { ChemicalComponent } from './techology/chemical/chemical.component';
 import { PharmacyComponent } from './techology/pharmacy/pharmacy.component';
 import { ElectricalComponent } from './techology/electrical/electrical.component';
+import { FriendComponent } from './stud/friend/friend.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
@@ -34,7 +35,8 @@ const routes: Routes = [
   {path:'civil',component:CivilComponent},
   {path:'chemical',component:ChemicalComponent},
   {path:'pharmacy',component:PharmacyComponent},
-  {path:'electrical',component:ElectricalComponent}
+  {path:'electrical',component:ElectricalComponent},
+  { path: 'friend/:userId',component: FriendComponent },
 ];
 
 @NgModule({

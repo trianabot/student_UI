@@ -19,6 +19,8 @@ export class ProfileComponent implements OnInit {
   activityurl: any;
   userPost:any=[];
   userCource:any;
+  userName:any;
+  city:any;
   public apiendpoint = environment.apiEndPoint;
   constructor(private userService:StudentService) { }
 
@@ -26,6 +28,8 @@ export class ProfileComponent implements OnInit {
     this.loggedInUser=sessionStorage.getItem("userId");
     this.gender=sessionStorage.getItem("gender");
     this.userCource=sessionStorage.getItem("course");
+    this.userName=sessionStorage.getItem("userName");
+    this.city=sessionStorage.getItem("city");
     this.getUserPost();
   }
 

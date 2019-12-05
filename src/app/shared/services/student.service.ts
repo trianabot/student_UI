@@ -60,12 +60,15 @@ export class StudentService {
   }
  
   getvideosbySelectedType(data){
-    console.log("data",data);
     return this.http.post(this.apiRoute + '/adminroute/getvideosbyselectedtype',data);
    }
 
    //To get all cources 
    getCources(){
     return this.http.get(this.apiRoute + '/adminroute/getcources');
+   }
+
+   getFriendProfile(data){
+    return this.http.post(this.apiRoute + '/user/friendprofile',data);
    }
 }

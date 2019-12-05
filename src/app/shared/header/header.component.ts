@@ -21,6 +21,18 @@ export class HeaderComponent implements OnInit {
   showUserProfile:boolean = false;
   myName = "";
   isUserLogged = false;
+  keyword = 'userName';
+  // data = [
+  //    {
+  //      id: 1,
+  //      name: 'Usa'
+  //    },
+  //    {
+  //      id: 2,
+  //      name: 'England'
+  //    }
+  // ];
+ data:any=[];
   constructor(private student:StudentService,private adminservice:AdminService,private route:Router,private location:Location) { }
 
   ngOnInit() {
@@ -36,7 +48,8 @@ export class HeaderComponent implements OnInit {
       this.showUserProfile = true;
       this.showMenu = false;
     }
-    this. getCources();
+  this. getCources();
+  this.getStudentData();
    this.student.$isLoggedIn.subscribe(data=>{
      this.isActive=data;
    })
@@ -89,5 +102,28 @@ export class HeaderComponent implements OnInit {
       this.category=data['data'];
     })
   }
+
+  selectEvent(item) {
+    console.log("selectEvent",item.userId);
+    this.route.navigate(['/friend/'+item.userId]);
+  }
+ 
+  onChangeSearch(val: string) {
+    console.log("onChangeSearch",val);
+    // fetch remote data from here
+    // And reassign the 'data' which is binded to 'data' property.
+  }
+  
+  onFocused(e){
+    console.log("onFocused",e);
+    // do something when input is focused
+  }
+  getStudentData(){
+    this.adminservice.getStudentData().subscribe(data=>{
+      this.data=data['data'];
+    //  console.log("this.studentData",this.studentData);
+    })
+  }
+  
 
 }
