@@ -61,6 +61,7 @@ export class HeaderComponent implements OnInit {
       isActive:false
     }
     this.adminservice.logout(obj).subscribe(data=>{
+      sessionStorage.clear();
       sessionStorage.removeItem("isActive");
       this.isActive=false;
       this.route.navigate(['/login']);

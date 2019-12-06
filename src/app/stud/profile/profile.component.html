@@ -10,67 +10,52 @@
                 <div class="col-md-12  padding0">
 
                     <div>
-                      <div class="pic_middle" *ngIf="gender=='female'">
-                        <img class="rounded-circle mx-auto d-block sac-profile-pic"
-                        [src]="apiendpoint+'/profilePicture/'+loggedInUser+'.jpg'" 
-                        onerror="if (this.src != '../../../assets/images/female.png') this.src = '../../../assets/images/female.png';"
-                    alt="../../../assets/images/female.png" class="avatar">
-                      </div>
-                      <div class="pic_middle" *ngIf="gender=='male'">
-                        <img class="rounded-circle mx-auto d-block sac-profile-pic"
-                        [src]="apiendpoint+'/profilePicture/'+loggedInUser+'.jpg'"
-                        onerror="if (this.src != '../../../assets/images/male.png') this.src = '../../../assets/images/male.png';"
-                    alt="../../../assets/images/male.png" class="avatar">
-                      </div>
+                        <div class="pic_middle" *ngIf="gender=='female'">
+                            <img class="rounded-circle mx-auto d-block sac-profile-pic"
+                                [src]="apiendpoint+'/profilePicture/'+loggedInUser+'.jpg'"
+                                onerror="if (this.src != '../../../assets/images/female.png') this.src = '../../../assets/images/female.png';"
+                                alt="../../../assets/images/female.png" class="avatar">
+                        </div>
+                        <div class="pic_middle" *ngIf="gender=='male'">
+                            <img class="rounded-circle mx-auto d-block sac-profile-pic"
+                                [src]="apiendpoint+'/profilePicture/'+loggedInUser+'.jpg'"
+                                onerror="if (this.src != '../../../assets/images/male.png') this.src = '../../../assets/images/male.png';"
+                                alt="../../../assets/images/male.png" class="avatar">
+                        </div>
+
                     </div>
-                   
+
                     <input id="imgInput" type="file" (change)="processFile($event)" name="newImage" class="visibility">
-                    <span class="attachFileSpan" onclick="document.getElementById('imgInput').click()" title="attach file">
-                      <span class="float-right sac_edit">
-                        <i aria-hidden="true" class="fa fa-pencil-square-o"></i></span>
+                    <span class="attachFileSpan" onclick="document.getElementById('imgInput').click()"
+                        title="attach file">
+                        <span class="float-right sac_edit">
+                            <i aria-hidden="true" class="fa fa-pencil-square-o"></i></span>
                     </span>
-                  </div>
+                </div>
 
 
-                  <div style="margin-top: 10px;">
-                    <div class="row" >
-                        <div class="col-md-6">
-                            <p>
-                                <span><b>Name</b></span>
-                            </p>
-                        </div>
-                        <div class="col-md-6">
-                            <p>
+                <div style="margin-top: 10px;">
+                    <div class="row">
+                        <div class="col-md-12" >
+                            <p class="text-center newcss">
                                 <span><b>{{userName}} </b></span>
-                            </p> 
+                            </p>
                         </div>
 
                     </div>
-                    <div class="row" >
-                        <div class="col-md-6">
-                            <p>
-                                <span><b>Branch</b></span>
+                    <div class="row">
+                            <div class="col-md-12" >
+                            <p class="text-center">
+                                <span>{{city}} </span>
                             </p>
-                        </div>
-                        <div class="col-md-6">
-                            <p>
-                                <span><b>{{userCource}}</b></span>
-                            </p> 
-                        </div>
-
+                            </div>
                     </div>
-                    <div class="row" >
-                        <div class="col-md-6">
-                            <p>
-                                <span><b>City</b></span>
+                    <div class="row">
+                            <div class="col-md-12" >
+                            <p class="text-center">
+                                <span>{{userCource}}</span>
                             </p>
-                        </div>
-                        <div class="col-md-6">
-                            <p>
-                                <span><b>{{city}}</b></span>
-                            </p> 
-                        </div>
-
+                            </div>
                     </div>
                 </div>
 
@@ -82,26 +67,26 @@
                                 <img src="../../../assets/1000.jpg">
                             </div>
                             <div class="col-md-4 nopadding">
-                                <img src="../../../assets/1001.jpg" >
+                                <img src="../../../assets/1001.jpg">
                             </div>
                             <div class="col-md-4 nopadding">
-                                <img src="../../../assets/1002.jpg" >
+                                <img src="../../../assets/1002.jpg">
                             </div>
                         </div>
-                        <div class="col-md-12 "style="display: flex;padding: 0px;">
+                        <div class="col-md-12 " style="display: flex;padding: 0px;">
                             <div class="col-md-4 nopadding">
                                 <img src="../../../assets/1003.jpg">
                             </div>
                             <div class="col-md-4 nopadding">
-                                <img src="../../../assets/1004.jpg" >
+                                <img src="../../../assets/1004.jpg">
                             </div>
                             <div class="col-md-4 nopadding">
-                                <img src="../../../assets/1005.jpg" >
+                                <img src="../../../assets/1005.jpg">
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <div>
                     <h5 style="color: #953853; margin-left: -10px;">DISCUSSION</h5>
                     <div class="row">
@@ -110,21 +95,21 @@
                                 <img src="../../../assets/1000.jpg">
                             </div>
                             <div class="col-md-4 nopadding">
-                                <img src="../../../assets/1001.jpg" >
+                                <img src="../../../assets/1001.jpg">
                             </div>
                             <div class="col-md-4 nopadding">
-                                <img src="../../../assets/1002.jpg" >
+                                <img src="../../../assets/1002.jpg">
                             </div>
                         </div>
-                        <div class="col-md-12 "style="display: flex;padding: 0px;">
+                        <div class="col-md-12 " style="display: flex;padding: 0px;">
                             <div class="col-md-4 nopadding">
                                 <img src="../../../assets/1003.jpg">
                             </div>
                             <div class="col-md-4 nopadding">
-                                <img src="../../../assets/1004.jpg" >
+                                <img src="../../../assets/1004.jpg">
                             </div>
                             <div class="col-md-4 nopadding">
-                                <img src="../../../assets/1005.jpg" >
+                                <img src="../../../assets/1005.jpg">
                             </div>
                         </div>
                     </div>
@@ -140,7 +125,8 @@
                         <i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;
                         <span><b>College Events</b></span>
                     </p>
-                </div> <div style="margin-top: 10px;">
+                </div>
+                <div style="margin-top: 10px;">
                     <p>
                         <i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;
                         <span><b>Groups</b></span>
@@ -154,20 +140,21 @@
                         <div class="col-md-8" style="display: flex;">
                             <!-- <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                             <h5>Start a Post</h5> -->
-                            
+
                             <div class="txt-align" style="display: flex;">
                                 <!-- <span> <i class="fa fa-play-circle"></i>
                                 </span> -->
-                                
-                                <input  id="uploadVodeo" type="file" class="sac_links visibility" (change)="onSelectFile($event)" />
-                
+
+                                <input id="uploadVodeo" type="file" class="sac_links visibility"
+                                    (change)="onSelectFile($event)" />
+
                                 <span title="Upload Video" class="attachFileSpan"
                                     onclick="document.getElementById('uploadVodeo').click()">
                                     <span class=" sac_edit1">
-                                            <i aria-hidden="true" class="fa fa-pencil-square-o"></i></span>
+                                        <i aria-hidden="true" class="fa fa-pencil-square-o"></i></span>
                                 </span>
                             </div>
-                         
+
                         </div>
                         <div class="col-md-4" style="text-align: right;">
                             <i class="fa fa-video-camera" aria-hidden="true"></i>
@@ -180,33 +167,34 @@
                 <div class="row" style="padding-left: 26px;" *ngFor="let obj of userPost index as id">
                     <div class="col-md-12" style="background-color: #f4f4f4;margin-bottom: 12px;" *ngIf="id!=0">
                         <div class=" col-md-12" style="background-color: #f4f4f4; margin-top: 5px;">
-                            <img class="img_w" src="../../assets/img.jpg" >
+                            <img class="img_w" src="../../assets/img.jpg">
                             <span>Kim Stuart</span>
                         </div>
-                        <div class="col-md-12" >
-                            <div >
-                                    <video [src]="apiendpoint+'/mediafiles/'+obj.Video" class="" width="100%" height="400px" style="padding-right: 0px;background: black;" controls    type="video/mp4"
-                                    >
-                                </video> 
+                        <div class="col-md-12">
+                            <div>
+                                <video [src]="apiendpoint+'/mediafiles/'+obj.Meme" class="" width="100%" height="400px"
+                                    style="padding-right: 0px;background: black;" controls type="video/mp4">
+                                </video>
                             </div>
-                                      
+
                         </div>
-                          <div class="col-md-12" style="background-color: #f4f4f4; text-align: right;">
-                                <i class="fa fa-share-alt" aria-hidden="true"></i>
-                          </div>
-                          <div class=" col-md-12 nopadding" style="background-color: #f4f4f4; ;margin-top: 10px;">
-                                <img class="img_w" src="../../assets/img.jpg" >
-                                <input type="text" class="box">
-                            </div>
-                            <div class=" col-md-12 nopadding" style="background-color: #f4f4f4;  margin-top: 10px;">
-                                    <img class="img_w" src="../../assets/img.jpg" >
-                                    <input type="text" class="box" style="background-color: #c6c6c6;" placeholder="How the Engine Start, itsnot Working Properly">
-                                </div>
+                        <div class="col-md-12" style="background-color: #f4f4f4; text-align: right;">
+                            <i class="fa fa-share-alt" aria-hidden="true"></i>
+                        </div>
+                        <div class=" col-md-12 nopadding" style="background-color: #f4f4f4; ;margin-top: 10px;">
+                            <img class="img_w" src="../../assets/img.jpg">
+                            <input type="text" class="box">
+                        </div>
+                        <div class=" col-md-12 nopadding" style="background-color: #f4f4f4;  margin-top: 10px;">
+                            <img class="img_w" src="../../assets/img.jpg">
+                            <input type="text" class="box" style="background-color: #c6c6c6;"
+                                placeholder="How the Engine Start, itsnot Working Properly">
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-1">
-                
+
             </div>
         </div>
     </div>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpBackend, HttpRequest, HttpEvent } from '@angular/common/http';
+import { HttpClient, HttpBackend, HttpRequest, HttpEvent, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 @Injectable({
@@ -8,6 +8,21 @@ import { Observable } from 'rxjs';
 export class AdminService {
   private apiRoute = environment.apiEndPoint;
   constructor(private http:HttpClient) { }
+
+  uploadMeme(mimeData:FormData, mimeUrl):Observable<HttpEvent<{}>>{
+  
+    let httpheaders:HttpHeaders = new HttpHeaders({
+      'Authorization':'Bearer '+sessionStorage.getItem('token')
+    });
+    const req = new HttpRequest('POST', mimeUrl, mimeData, {
+      headers:httpheaders,
+      reportProgress: true,
+      responseType: 'json'
+    });
+
+    return this.http.request(req);
+  }
+
   getStudentData() {
     return this.http.get(this.apiRoute + '/user/getstudinfo');
   }
@@ -29,6 +44,9 @@ export class AdminService {
     }
     );
     return this.http.request(req);
+  }
+  getVideos(){
+    return this.http.get(this.apiRoute + '/adminroute/getvideos');
   }
   getVideosByType(data){
     return this.http.post(this.apiRoute + '/adminroute/getvideosbytype',data);

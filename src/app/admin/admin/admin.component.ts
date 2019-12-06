@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/shared/services/admin.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-
+import {FormGroup,FormBuilder,Validators} from '@angular/forms';
+import { environment } from 'src/environments/environment';
+import { HttpResponse } from '@angular/common/http';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -16,17 +17,63 @@ export class AdminComponent implements OnInit {
   selectedCource:any;
   subjectData:any=[];
   selectedsub:any;
-  constructor(private adminservice:AdminService) { }
+  videoForm:FormGroup;
+  uploadVideo: File;
+  activityurl: any;
+  loggedInUser:any;
+  videoData:any=[];
+  public apiendpoint = environment.apiEndPoint;
+  constructor(private adminservice:AdminService,private formbuilder:FormBuilder) { }
 
   ngOnInit() {
+    this.loggedInUser=sessionStorage.getItem('userId');
+    this.videoForm=this.formbuilder.group({
+      Topic:['',Validators.required],
+      Subject:['',Validators.required],
+      Cource:['',Validators.required],
+    });
     this.getStudentData();
     this.getCources();
+    this.getVideoData();
   }
-   
+  
+  onSelectFile(event) {
+    this.activityurl = ""
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      this.uploadVideo = event.target.files[0]
+      reader.onload = (event) => {
+        this.activityurl = (<FileReader>event.target).result;
+      }
+    }
+  }
+
+  onSubmit(){
+    console.log("this.videoForm.value:  ",this.videoForm.value);
+    console.log("this.uploadVideo:  ",this.uploadVideo)
+        let mimeFormData: FormData = new FormData();
+        mimeFormData.append('memefile', this.uploadVideo);
+        mimeFormData.append('Cource', this.videoForm.value.Cource);
+        mimeFormData.append('Subject', this.videoForm.value.Subject);
+        mimeFormData.append('Topic', this.videoForm.value.Topic);
+        mimeFormData.append('loggedInUser',sessionStorage.getItem("userId"));
+        let mimeurl: string = this.apiendpoint + '/adminroute/savevedio/' + this.loggedInUser + new Date().getMilliseconds();
+        this.adminservice.uploadMeme(mimeFormData, mimeurl).subscribe(res => {
+          this.getVideoData();
+          console.log("data",res);
+          if (res instanceof HttpResponse) {
+          }
+          this.activityurl;
+        }, error => {
+          console.log("error", error);
+        });
+  }
+
   getStudentData(){
     this.adminservice.getStudentData().subscribe(data=>{
       this.studentData=data['data'];
-    //  console.log("this.studentData",this.studentData);
+    console.log("this.studentData",this.studentData);
     })
   }
 
@@ -94,7 +141,7 @@ export class AdminComponent implements OnInit {
     }
      this.adminservice.getsubjectbyid(obj).subscribe(data=>{
        this.subjectData=data['data'][0]['subjects']
-        console.log("getsubjectbyid",this.subjectData);
+        console.log("subjectData",this.subjectData);
      },err=>{
         console.log("getsubjectbyid",err);
      })
@@ -104,5 +151,11 @@ export class AdminComponent implements OnInit {
     this.selectedsub=selectedsub;
     console.log("selectedSubject",this.selectedsub,this.cource);
 
+  }
+
+  getVideoData(){
+   this.adminservice.getVideos().subscribe(data=>{
+     this.videoData=data['data'];
+   })
   }
 }
