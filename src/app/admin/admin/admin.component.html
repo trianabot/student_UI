@@ -197,12 +197,15 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="row">
+        <div class="row pb3">
          
-              <div class="col-md-4"  *ngFor="let obj of videoData">
+              <div class="col-md-4 mb5"  *ngFor="let obj of videoData" style="border:solid 1px" >
+                  <span>{{obj.Topic}}</span>
                   <video [src]="apiendpoint+'/mediafiles/'+obj.Meme" width="300px" height="200px"
                       style="padding-right: 0px;background: black;" controls type="video/mp4">
                   </video>
+                  <span><b>OwnerName:</b> {{obj.OwnerName}}</span>
+                  <span><b>Published On:</b> {{obj.CreatedOn}}</span>
               </div>
          
         </div>

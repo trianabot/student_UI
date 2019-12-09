@@ -56,11 +56,13 @@ export class AdminComponent implements OnInit {
         mimeFormData.append('memefile', this.uploadVideo);
         mimeFormData.append('Cource', this.videoForm.value.Cource);
         mimeFormData.append('Subject', this.videoForm.value.Subject);
+        mimeFormData.append('userName',sessionStorage.getItem("userName"));
         mimeFormData.append('Topic', this.videoForm.value.Topic);
         mimeFormData.append('loggedInUser',sessionStorage.getItem("userId"));
         let mimeurl: string = this.apiendpoint + '/adminroute/savevedio/' + this.loggedInUser + new Date().getMilliseconds();
         this.adminservice.uploadMeme(mimeFormData, mimeurl).subscribe(res => {
           this.getVideoData();
+          this.videoForm.reset();
           console.log("data",res);
           if (res instanceof HttpResponse) {
           }
