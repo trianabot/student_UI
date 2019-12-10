@@ -26,6 +26,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.loggedInUser=sessionStorage.getItem("userId");
+    console.log(" this.loggedInUser"+ this.loggedInUser);
     this.gender=sessionStorage.getItem("gender");
     this.userCource=sessionStorage.getItem("course");
     this.userName=sessionStorage.getItem("userName");
@@ -66,6 +67,7 @@ export class ProfileComponent implements OnInit {
     let mimeFormData: FormData = new FormData();
     mimeFormData.append('memefile', this.uploadImage);
     mimeFormData.append('type', data);
+    mimeFormData.append('userName',sessionStorage.getItem("userName"));
     mimeFormData.append('loggedInUser',sessionStorage.getItem("userId"));
     let mimeurl: string = this.apiendpoint + '/adminroute/savevedio/' + this.loggedInUser + new Date().getMilliseconds();
     this.userService.uploadMeme(mimeFormData, mimeurl).subscribe(res => {
@@ -80,12 +82,39 @@ export class ProfileComponent implements OnInit {
 
   getUserPost(){
     let obj={
-      type:sessionStorage.getItem("course")
+      userId:this.loggedInUser
     }
     this.userService.getvideosUserId(obj).subscribe(data=>{
       this.userPost=data['data'];
+      console.log("this.userPost",this.userPost);
     },err=>{
     })
   }
+
+  likePost(obj) {
+    let body = {
+      userId: this.loggedInUser,
+      memeId: obj
+    }
+    this.userService.likePost(body).subscribe(data => {
+      if (data) {
+        this.getUserPost();
+      }
+    });
+  }
+
+  dislikePost(obj) {
+    console.log(obj);
+    let body = {
+      userId: this.loggedInUser,
+      memeId: obj
+    };
+    this.userService.dislikePost(body).subscribe(data => {
+      if (data) {
+        this.getUserPost();
+      }
+    });
+  }
+
 
 }

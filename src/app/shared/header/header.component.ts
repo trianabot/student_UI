@@ -39,7 +39,7 @@ export class HeaderComponent implements OnInit {
     this.isActive=JSON.parse(sessionStorage.getItem("isActive"));
     this.gender = sessionStorage.getItem("gender");
     this.loggedInUser=sessionStorage.getItem("userId");
-    
+    console.log("this.loggedInUser"+this.loggedInUser);
     if(this.loggedInUser == null || this.loggedInUser == undefined){
       this.showMenu = true;
       this.showUserProfile = false;

@@ -71,4 +71,32 @@ export class StudentService {
    getFriendProfile(data){
     return this.http.post(this.apiRoute + '/user/friendprofile',data);
    }
+
+   // Like the meme posted
+
+  likePost(obj){
+    let httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization':'Bearer '+sessionStorage.getItem('token')
+    });
+    let options = {
+      headers: httpHeaders
+    };
+    return this.http.put(this.apiRoute + "/user/likePost",obj,options);
+
+  }
+
+  // Dislike the meme posted
+
+  dislikePost(obj) {
+    let httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization':'Bearer '+sessionStorage.getItem('token')
+    });
+    let options = {
+      headers: httpHeaders
+    };
+    return this.http.put(this.apiRoute + "/user/dislikePost",obj,options);
+  }
+
 }

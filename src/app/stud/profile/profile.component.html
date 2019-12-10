@@ -165,7 +165,7 @@
                     </div>
                 </div>
                 <div class="row" style="padding-left: 26px;" *ngFor="let obj of userPost index as id">
-                    <div class="col-md-12" style="background-color: #f4f4f4;margin-bottom: 12px;" *ngIf="id!=0">
+                    <div class="col-md-12" style="background-color: #f4f4f4;margin-bottom: 12px;" >
                         <div class=" col-md-12" style="background-color: #f4f4f4; margin-top: 5px;">
                             <img class="img_w" src="../../assets/img.jpg">
                             <span>Kim Stuart</span>
@@ -180,16 +180,33 @@
                         </div>
                         <div class="col-md-12" style="background-color: #f4f4f4; text-align: right;">
                             <i class="fa fa-share-alt" aria-hidden="true"></i>
+
+                             <!--likes button-->
+                        <div style="float: left">
+                            <button [disabled]="obj.likedBy.indexOf(loggedInUser) > -1"
+                              class="btn btn-sm btn-success like_btn" (click)="likePost(obj.MemeId)">
+                              <span class="color_light" style="blue"><i class="fa fa-thumbs-up" aria-hidden="true"></i>&nbsp;</span>
+                              {{ obj.likes }}</button>
+                          </div>
+  
+                          <!--dislikes button-->
+                          <div style="float: left">
+                            <button [disabled]="obj.dislikedBy.indexOf(loggedInUser) > -1" type="button" name="button"
+                              class="btn btn-sm btn-warning dislike_btn" (click)="dislikePost(obj.MemeId)">
+                              <span class="color_light"> <i class="fa fa-thumbs-down"></i></span>&nbsp;
+                              {{ obj.dislikes }}</button>
+                          </div>
+
                         </div>
                         <div class=" col-md-12 nopadding" style="background-color: #f4f4f4; ;margin-top: 10px;">
                             <img class="img_w" src="../../assets/img.jpg">
                             <input type="text" class="box">
                         </div>
-                        <div class=" col-md-12 nopadding" style="background-color: #f4f4f4;  margin-top: 10px;">
+                        <!-- <div class=" col-md-12 nopadding" style="background-color: #f4f4f4;  margin-top: 10px;">
                             <img class="img_w" src="../../assets/img.jpg">
                             <input type="text" class="box" style="background-color: #c6c6c6;"
                                 placeholder="How the Engine Start, itsnot Working Properly">
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
