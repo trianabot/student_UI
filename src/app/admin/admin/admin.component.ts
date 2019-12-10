@@ -22,11 +22,13 @@ export class AdminComponent implements OnInit {
   activityurl: any;
   loggedInUser:any;
   videoData:any=[];
+  gender:any;
   public apiendpoint = environment.apiEndPoint;
   constructor(private adminservice:AdminService,private formbuilder:FormBuilder) { }
 
   ngOnInit() {
     this.loggedInUser=sessionStorage.getItem('userId');
+    this.gender=sessionStorage.getItem('gender');
     this.videoForm=this.formbuilder.group({
       Topic:['',Validators.required],
       Subject:['',Validators.required],
@@ -55,6 +57,7 @@ export class AdminComponent implements OnInit {
         let mimeFormData: FormData = new FormData();
         mimeFormData.append('memefile', this.uploadVideo);
         mimeFormData.append('Cource', this.videoForm.value.Cource);
+        mimeFormData.append('gender', this.gender);
         mimeFormData.append('Subject', this.videoForm.value.Subject);
         mimeFormData.append('userName',sessionStorage.getItem("userName"));
         mimeFormData.append('Topic', this.videoForm.value.Topic);

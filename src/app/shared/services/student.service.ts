@@ -98,5 +98,5 @@ export class StudentService {
     };
     return this.http.put(this.apiRoute + "/user/dislikePost",obj,options);
   }
-
+  
 }

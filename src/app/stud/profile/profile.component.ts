@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { AdminService } from 'src/app/shared/services/admin.service';
 import { HttpResponse } from '@angular/common/http';
 import { StudentService } from 'src/app/shared/services/student.service';
-
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -21,8 +20,10 @@ export class ProfileComponent implements OnInit {
   userCource:any;
   userName:any;
   city:any;
+  comment:any;
   public apiendpoint = environment.apiEndPoint;
-  constructor(private userService:StudentService) { }
+  constructor(private userService:StudentService,private adminservice:AdminService) { 
+  }
 
   ngOnInit() {
     this.loggedInUser=sessionStorage.getItem("userId");
@@ -33,6 +34,8 @@ export class ProfileComponent implements OnInit {
     this.city=sessionStorage.getItem("city");
     this.getUserPost();
   }
+
+  
 
   processFile(event) {
     this.selectedFiles = event.target.files;
@@ -67,6 +70,7 @@ export class ProfileComponent implements OnInit {
     let mimeFormData: FormData = new FormData();
     mimeFormData.append('memefile', this.uploadImage);
     mimeFormData.append('type', data);
+    mimeFormData.append('gender', this.gender);
     mimeFormData.append('userName',sessionStorage.getItem("userName"));
     mimeFormData.append('loggedInUser',sessionStorage.getItem("userId"));
     let mimeurl: string = this.apiendpoint + '/adminroute/savevedio/' + this.loggedInUser + new Date().getMilliseconds();
@@ -116,5 +120,22 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  postComment(comment,MemeId){
+    
+    let obj={
+      Comment:comment,
+      MemeId: MemeId,
+      UserId: this.loggedInUser,
+      Username: this.userName,
+      gender:this.gender,
+    }
+    console.log("comment on video",obj);
+    this.adminservice.postComments(obj).subscribe(data=>{
+      console.log("res on comment service",data);
+      this.comment=''
+    },err=>{
+      console.log("err on comment service",err);
+    })
+  }
 
 }

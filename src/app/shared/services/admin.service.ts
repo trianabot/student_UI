@@ -78,4 +78,8 @@ export class AdminService {
       return this.http.post(this.apiRoute + '/adminroute/getsubjectbyid',data);
    }
 
+   postComments(data){
+    return this.http.post(this.apiRoute + '/adminroute/postcomment',data);
+  }
+
 }

@@ -56,7 +56,7 @@ import { FriendComponent } from './stud/friend/friend.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AutocompleteLibModule
+    AutocompleteLibModule,
   ],
   providers: [StudentService,
     AdminService,

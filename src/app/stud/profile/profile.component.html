@@ -166,10 +166,25 @@
                 </div>
                 <div class="row" style="padding-left: 26px;" *ngFor="let obj of userPost index as id">
                     <div class="col-md-12" style="background-color: #f4f4f4;margin-bottom: 12px;" >
-                        <div class=" col-md-12" style="background-color: #f4f4f4; margin-top: 5px;">
-                            <img class="img_w" src="../../assets/img.jpg">
-                            <span>Kim Stuart</span>
-                        </div>
+                        <!-- <div class=" col-md-12" style="background-color: #f4f4f4; margin-top: 5px;">
+                            <img class="img_w" [src]="apiendpoint+'/profilePicture/'+loggedInUser+'.jpg'">
+                            <span>{{obj.OwnerName}}</span>
+                        </div> -->
+                       
+                        <div class=" col-md-12" style="background-color: #f4f4f4; margin-top: 5px;" *ngIf="obj.gender=='female'">
+                            <img style="width: 40px;height: 40px;"  class="rounded-circle mx-auto d-block "
+                              [src]="apiendpoint+'/profilePicture/'+obj.OwnerId+'.jpg'"
+                              onerror="if (this.src != '../../../assets/images/female.png') this.src = '../../../assets/images/female.png';"
+                              alt="../../../assets/images/female.png" class="avatar">
+                              <span>{{obj.OwnerName}}</span>
+                          </div>
+                          <div class=" col-md-12" style="background-color: #f4f4f4; margin-top: 5px;" *ngIf="obj.gender=='male'">
+                            <img style="width: 40px;height: 40px;" class="rounded-circle mx-auto d-block "
+                              [src]="apiendpoint+'/profilePicture/'+obj.OwnerId+'.jpg'"
+                              onerror="if (this.src != '../../../assets/images/male.png') this.src = '../../../assets/images/male.png';"
+                              alt="../../../assets/images/male.png" class="avatar">
+                              <span>{{obj.OwnerName}}</span>
+                          </div>
                         <div class="col-md-12">
                             <div>
                                 <video [src]="apiendpoint+'/mediafiles/'+obj.Meme" class="" width="100%" height="400px"
@@ -200,18 +215,20 @@
                         </div>
                         <div class=" col-md-12 nopadding" style="background-color: #f4f4f4; ;margin-top: 10px;">
                             <img class="img_w" src="../../assets/img.jpg">
-                            <input type="text" class="box">
+                            <input type="text" class="box" [(ngModel)]="comment" style="width:600px">
+                            <button type="submit" style="margin-left: 5px;" (click)="postComment(comment,obj.MemeId)">send</button>
                         </div>
-                        <!-- <div class=" col-md-12 nopadding" style="background-color: #f4f4f4;  margin-top: 10px;">
-                            <img class="img_w" src="../../assets/img.jpg">
-                            <input type="text" class="box" style="background-color: #c6c6c6;"
-                                placeholder="How the Engine Start, itsnot Working Properly">
-                        </div> -->
+                        <div class=" col-md-12 nopadding" style="background-color: #f4f4f4;  margin-top: 10px;" *ngFor="let comm of obj.comments">
+                            <img class="img_w" style="width: 40px;height: 40px;"  [src]="apiendpoint+'/profilePicture/'+comm.UserId+'.jpg'">
+                           <p>
+                                   {{comm.Comment}}
+                           </p>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-1">
-
+                
             </div>
         </div>
     </div>
