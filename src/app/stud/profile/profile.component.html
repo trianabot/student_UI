@@ -1,16 +1,227 @@
-<div class="container">
+ <!-- <div class="container">
     <div class="row">
         <div class="col-md-12" style="display: flex;">
             <div class="col-md-3 text-bg">
-                <!-- <div>
-                    <img class="w-50" src="../../assets/img.jpg" alt="Avatar" style="width:200px;margin-top: 50px;">
-                    <h5 class="text-center">Kim Stuart</h5>
-                    <p class="text-center">Followers(98)</p>
-                </div> -->
                 <div class="col-md-12  padding0">
-
                     <div>
                         <div class="pic_middle" *ngIf="gender=='female'">
+                            <img class="rounded-circle mx-auto d-block sac-profile-pic"
+                                [src]="apiendpoint+'/profilePicture/'+loggedInUser+'.jpg'"
+                                onerror="if (this.src != '../../../assets/images/female.png') this.src = '../../../assets/images/female.png';"
+                                alt="../../../assets/images/female.png" class="avatar">
+                        </div>
+                        <div class="pic_middle" *ngIf="gender=='male'">
+                            <img class="rounded-circle mx-auto d-block sac-profile-pic"
+                                [src]="apiendpoint+'/profilePicture/'+loggedInUser+'.jpg'"
+                                onerror="if (this.src != '../../../assets/images/male.png') this.src = '../../../assets/images/male.png';"
+                                alt="../../../assets/images/male.png" class="avatar">
+                        </div>
+                    </div>
+                    <input id="imgInput" type="file" (change)="processFile($event)" name="newImage" class="visibility">
+                    <span class="attachFileSpan" onclick="document.getElementById('imgInput').click()"
+                        title="attach file">
+                        <span class="float-right sac_edit">
+                            <i aria-hidden="true" class="fa fa-pencil-square-o"></i></span>
+                    </span>
+                </div>
+                <div style="margin-top: 10px;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p class="text-center newcss">
+                                <span><b>{{userName}} </b></span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p class="text-center">
+                                <span>{{city}} </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p class="text-center">
+                                <span>{{userCource}}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h5 style="color: #953853; margin-left: -10px;">SUBSCRIBED</h5>
+                    <div class="row">
+                        <div class="col-md-12" style="display: flex;padding: 0px;">
+                            <div class="col-md-4 nopadding">
+                                <img src="../../../assets/1000.jpg">
+                            </div>
+                            <div class="col-md-4 nopadding">
+                                <img src="../../../assets/1001.jpg">
+                            </div>
+                            <div class="col-md-4 nopadding">
+                                <img src="../../../assets/1002.jpg">
+                            </div>
+                        </div>
+                        <div class="col-md-12 " style="display: flex;padding: 0px;">
+                            <div class="col-md-4 nopadding">
+                                <img src="../../../assets/1003.jpg">
+                            </div>
+                            <div class="col-md-4 nopadding">
+                                <img src="../../../assets/1004.jpg">
+                            </div>
+                            <div class="col-md-4 nopadding">
+                                <img src="../../../assets/1005.jpg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h5 style="color: #953853; margin-left: -10px;">DISCUSSION</h5>
+                    <div class="row">
+                        <div class="col-md-12" style="display: flex;padding: 0px;">
+                            <div class="col-md-4 nopadding">
+                                <img src="../../../assets/1000.jpg">
+                            </div>
+                            <div class="col-md-4 nopadding">
+                                <img src="../../../assets/1001.jpg">
+                            </div>
+                            <div class="col-md-4 nopadding">
+                                <img src="../../../assets/1002.jpg">
+                            </div>
+                        </div>
+                        <div class="col-md-12 " style="display: flex;padding: 0px;">
+                            <div class="col-md-4 nopadding">
+                                <img src="../../../assets/1003.jpg">
+                            </div>
+                            <div class="col-md-4 nopadding">
+                                <img src="../../../assets/1004.jpg">
+                            </div>
+                            <div class="col-md-4 nopadding">
+                                <img src="../../../assets/1005.jpg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top: 10px;">
+                    <p>
+                        <i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;
+                        <span><b>Friends</b></span>
+                    </p>
+                </div>
+                <div style="margin-top: 10px;">
+                    <p>
+                        <i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;
+                        <span><b>College Events</b></span>
+                    </p>
+                </div>
+                <div style="margin-top: 10px;">
+                    <p>
+                        <i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;
+                        <span><b>Groups</b></span>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="row m-t-50">
+                    <div class="col-md-12" style="display:contents;">
+                        <div class="col-md-8" style="display: flex;">
+                            <div class="txt-align" style="display: flex;">
+                                <input id="uploadVodeo" type="file" class="sac_links visibility"
+                                    (change)="onSelectFile($event)" />
+
+                                <span title="Upload Video" class="attachFileSpan"
+                                    onclick="document.getElementById('uploadVodeo').click()">
+                                    <span class=" sac_edit1">
+                                        <i aria-hidden="true" class="fa fa-pencil-square-o"></i></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-4" style="text-align: right;">
+                            <i class="fa fa-video-camera" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="text-align: right; background: #eac9d2;">
+                        <button class="btn" (click)="saveVideo('Health & Fitness')">Post</button>
+                    </div>
+                </div>
+                <div class="row" style="padding-left: 26px;" *ngFor="let obj of userPost index as id">
+                    <div class="col-md-12" style="background-color: #f4f4f4;margin-bottom: 12px;">
+                        <div class=" col-md-12" style="background-color: #f4f4f4; margin-top: 5px;"
+                            *ngIf="obj.gender=='female'">
+                            <img style="width: 40px;height: 40px;" class="rounded-circle mx-auto d-block "
+                                [src]="apiendpoint+'/profilePicture/'+obj.OwnerId+'.jpg'"
+                                onerror="if (this.src != '../../../assets/images/female.png') this.src = '../../../assets/images/female.png';"
+                                alt="../../../assets/images/female.png" class="avatar">
+                            <span>{{obj.OwnerName}}</span>
+                        </div>
+                        <div class=" col-md-12" style="background-color: #f4f4f4; margin-top: 5px;"
+                            *ngIf="obj.gender=='male'">
+                            <img style="width: 40px;height: 40px;" class="rounded-circle mx-auto d-block "
+                                [src]="apiendpoint+'/profilePicture/'+obj.OwnerId+'.jpg'"
+                                onerror="if (this.src != '../../../assets/images/male.png') this.src = '../../../assets/images/male.png';"
+                                alt="../../../assets/images/male.png" class="avatar">
+                            <span>{{obj.OwnerName}}</span>
+                        </div>
+                        <div class="col-md-12">
+                            <div>
+                                <video [src]="apiendpoint+'/mediafiles/'+obj.Meme" class="" width="100%" height="400px"
+                                    style="padding-right: 0px;background: black;" controls type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="background-color: #f4f4f4; text-align: right;">
+                            <i class="fa fa-share-alt" aria-hidden="true"></i>
+
+                          
+                            <div style="float: left">
+                                <button [disabled]="obj.likedBy.indexOf(loggedInUser) > -1"
+                                    class="btn btn-sm btn-success like_btn" (click)="likePost(obj.MemeId)">
+                                    <span class="color_light" style="blue"><i class="fa fa-thumbs-up"
+                                            aria-hidden="true"></i>&nbsp;</span>
+                                    {{ obj.likes }}</button>
+                            </div>
+
+                            
+                            <div style="float: left">
+                                <button [disabled]="obj.dislikedBy.indexOf(loggedInUser) > -1" type="button"
+                                    name="button" class="btn btn-sm btn-warning dislike_btn"
+                                    (click)="dislikePost(obj.MemeId)">
+                                    <span class="color_light"> <i class="fa fa-thumbs-down"></i></span>&nbsp;
+                                    {{ obj.dislikes }}</button>
+                            </div>
+
+                        </div>
+                        <div class=" col-md-12 nopadding" style="background-color: #f4f4f4; ;margin-top: 10px;">
+                            <img class="img_w" src="../../assets/img.jpg">
+                            <input type="text" class="box" [(ngModel)]="comment" style="width:600px">
+                            <button type="submit" style="margin-left: 5px;"
+                                (click)="postComment(comment,obj.MemeId)">send</button>
+                        </div>
+                        <div class=" col-md-12 nopadding" style="background-color: #f4f4f4;  margin-top: 10px;"
+                            *ngFor="let comm of obj.comments">
+                            <img class="img_w" style="width: 40px;height: 40px;"
+                                [src]="apiendpoint+'/profilePicture/'+comm.UserId+'.jpg'">
+                            <p>
+                                {{comm.Comment}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1">
+
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12" style="display: flex; margin-top: 50px;">
+            <div class="col-md-3 sticky text-bg">
+                <div class="col-md-12 padding0">
+
+                    <div>
+                        <div class="pic_middle" style="width: 60%;height: auto;margin-left: 57px;" *ngIf="gender=='female'">
                             <img class="rounded-circle mx-auto d-block sac-profile-pic"
                                 [src]="apiendpoint+'/profilePicture/'+loggedInUser+'.jpg'"
                                 onerror="if (this.src != '../../../assets/images/female.png') this.src = '../../../assets/images/female.png';"
@@ -29,14 +240,14 @@
                     <span class="attachFileSpan" onclick="document.getElementById('imgInput').click()"
                         title="attach file">
                         <span class="float-right sac_edit">
-                            <i aria-hidden="true" class="fa fa-pencil-square-o"></i></span>
+                            <i class="fa fa-pencil" aria-hidden="true"></i></span>
                     </span>
                 </div>
 
 
                 <div style="margin-top: 10px;">
                     <div class="row">
-                        <div class="col-md-12" >
+                        <div class="col-md-12" style="height: 27px;" >
                             <p class="text-center newcss">
                                 <span><b>{{userName}} </b></span>
                             </p>
@@ -44,14 +255,14 @@
 
                     </div>
                     <div class="row">
-                            <div class="col-md-12" >
+                            <div class="col-md-12" style="height: 20px;" >
                             <p class="text-center">
                                 <span>{{city}} </span>
                             </p>
                             </div>
                     </div>
                     <div class="row">
-                            <div class="col-md-12" >
+                            <div class="col-md-12" style="height: 24px;" >
                             <p class="text-center">
                                 <span>{{userCource}}</span>
                             </p>
@@ -138,23 +349,16 @@
                 <div class="row m-t-50">
                     <div class="col-md-12" style="display:contents;">
                         <div class="col-md-8" style="display: flex;">
-                            <!-- <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                            <h5>Start a Post</h5> -->
-
                             <div class="txt-align" style="display: flex;">
-                                <!-- <span> <i class="fa fa-play-circle"></i>
-                                </span> -->
-
                                 <input id="uploadVodeo" type="file" class="sac_links visibility"
                                     (change)="onSelectFile($event)" />
 
                                 <span title="Upload Video" class="attachFileSpan"
                                     onclick="document.getElementById('uploadVodeo').click()">
                                     <span class=" sac_edit1">
-                                        <i aria-hidden="true" class="fa fa-pencil-square-o"></i></span>
+                                        <i class="fa fa-upload" aria-hidden="true"></i></span>
                                 </span>
                             </div>
-
                         </div>
                         <div class="col-md-4" style="text-align: right;">
                             <i class="fa fa-video-camera" aria-hidden="true"></i>
@@ -166,37 +370,21 @@
                 </div>
                 <div class="row" style="padding-left: 26px;" *ngFor="let obj of userPost index as id">
                     <div class="col-md-12" style="background-color: #f4f4f4;margin-bottom: 12px;" >
-                        <!-- <div class=" col-md-12" style="background-color: #f4f4f4; margin-top: 5px;">
-                            <img class="img_w" [src]="apiendpoint+'/profilePicture/'+loggedInUser+'.jpg'">
-                            <span>{{obj.OwnerName}}</span>
-                        </div> -->
-                       
-                        <div class=" col-md-12" style="background-color: #f4f4f4; margin-top: 5px;" *ngIf="obj.gender=='female'">
-                            <img style="width: 40px;height: 40px;"  class="rounded-circle mx-auto d-block "
-                              [src]="apiendpoint+'/profilePicture/'+obj.OwnerId+'.jpg'"
-                              onerror="if (this.src != '../../../assets/images/female.png') this.src = '../../../assets/images/female.png';"
-                              alt="../../../assets/images/female.png" class="avatar">
-                              <span>{{obj.OwnerName}}</span>
-                          </div>
-                          <div class=" col-md-12" style="background-color: #f4f4f4; margin-top: 5px;" *ngIf="obj.gender=='male'">
-                            <img style="width: 40px;height: 40px;" class="rounded-circle mx-auto d-block "
-                              [src]="apiendpoint+'/profilePicture/'+obj.OwnerId+'.jpg'"
-                              onerror="if (this.src != '../../../assets/images/male.png') this.src = '../../../assets/images/male.png';"
-                              alt="../../../assets/images/male.png" class="avatar">
-                              <span>{{obj.OwnerName}}</span>
-                          </div>
+                        <div class=" col-md-12" style="background-color: #f4f4f4; margin-top: 5px;">
+                            <img class="img_w" src="../../assets/img.jpg">
+                            <span>Kim Stuart</span>
+                        </div>
                         <div class="col-md-12">
                             <div>
                                 <video [src]="apiendpoint+'/mediafiles/'+obj.Meme" class="" width="100%" height="400px"
                                     style="padding-right: 0px;background: black;" controls type="video/mp4">
                                 </video>
                             </div>
-
                         </div>
                         <div class="col-md-12" style="background-color: #f4f4f4; text-align: right;">
                             <i class="fa fa-share-alt" aria-hidden="true"></i>
 
-                             <!--likes button-->
+                           
                         <div style="float: left">
                             <button [disabled]="obj.likedBy.indexOf(loggedInUser) > -1"
                               class="btn btn-sm btn-success like_btn" (click)="likePost(obj.MemeId)">
@@ -204,7 +392,7 @@
                               {{ obj.likes }}</button>
                           </div>
   
-                          <!--dislikes button-->
+                          
                           <div style="float: left">
                             <button [disabled]="obj.dislikedBy.indexOf(loggedInUser) > -1" type="button" name="button"
                               class="btn btn-sm btn-warning dislike_btn" (click)="dislikePost(obj.MemeId)">
@@ -213,22 +401,29 @@
                           </div>
 
                         </div>
+                        <!-- <div class=" col-md-12 nopadding" style="background-color: #f4f4f4; ;margin-top: 10px;">
+                            <img class="img_w" src="../../assets/img.jpg">
+                            <input type="text" class="box">
+                        </div> -->
                         <div class=" col-md-12 nopadding" style="background-color: #f4f4f4; ;margin-top: 10px;">
                             <img class="img_w" src="../../assets/img.jpg">
                             <input type="text" class="box" [(ngModel)]="comment" style="width:600px">
-                            <button type="submit" style="margin-left: 5px;" (click)="postComment(comment,obj.MemeId)">send</button>
+                            <button type="submit" style="margin-left: 5px;"
+                                (click)="postComment(comment,obj.MemeId)">send</button>
                         </div>
-                        <div class=" col-md-12 nopadding" style="background-color: #f4f4f4;  margin-top: 10px;" *ngFor="let comm of obj.comments">
-                            <img class="img_w" style="width: 40px;height: 40px;"  [src]="apiendpoint+'/profilePicture/'+comm.UserId+'.jpg'">
-                           <p>
-                                   {{comm.Comment}}
-                           </p>
-                        </div>
+                        <div class=" col-md-12 nopadding" style="background-color: #f4f4f4;  margin-top: 10px;"
+                        *ngFor="let comm of obj.comments">
+                        <img class="img_w" style="width: 40px;height: 40px;"
+                            [src]="apiendpoint+'/profilePicture/'+comm.UserId+'.jpg'">
+                        <p>
+                            {{comm.Comment}}
+                        </p>
+                    </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-1">
-                
+
             </div>
         </div>
     </div>

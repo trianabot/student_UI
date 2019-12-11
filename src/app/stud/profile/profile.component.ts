@@ -131,6 +131,7 @@ export class ProfileComponent implements OnInit {
     }
     console.log("comment on video",obj);
     this.adminservice.postComments(obj).subscribe(data=>{
+      this.getUserPost();
       console.log("res on comment service",data);
       this.comment=''
     },err=>{
